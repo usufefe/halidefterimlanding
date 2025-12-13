@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#54BD95" />
+
+  <title>Halı Defterim — Halı alım/teslim, rota ve tahsilat takibi</title>
+  <meta name="description" content="Halı Defterim ile siparişleri tek ekranda yönetin, rotayı planlayın, teslimatları takip edin ve tahsilatları kayıt altına alın." />
+
+  <meta property="og:title" content="Halı Defterim" />
+  <meta property="og:description" content="Halı alım/teslim süreçleri için sipariş, rota ve tahsilat takibi." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="./assets/logo.png" />
+  <link rel="shortcut icon" type="image/png" href="./assets/logo.png" />
+  <link rel="apple-touch-icon" href="./assets/logo.png" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="top-bg">
+    <header class="container">
+      <nav class="nav" aria-label="Üst menü">
+        <a class="brand" href="#home" aria-label="Halı Defterim">
+          <img class="brand-logo" src="./assets/logo.png" alt="" aria-hidden="true" />
+          <span class="brand-text">Halı Defterim</span>
+        </a>
+
+        <div class="nav-links" role="navigation">
+          <a class="active" href="#home">Ana Sayfa</a>
+          <a href="#product">Ürün</a>
+          <a href="#pricing">Paketler</a>
+          <a href="#contact">İletişim</a>
+          <a href="#about">Hakkımızda</a>
+        </div>
+
+        <div class="nav-cta">
+          <a class="signup" href="#pricing">İndir</a>
+        </div>
+      </nav>
+
+      <section id="home" class="hero" aria-label="Giriş">
+        <div>
+          <h1 class="h1">Halı işinizi daha verimli yönetin</h1>
+
+          <p class="p hero-sub">
+            Halı Defterim; alım–teslim listesini, rotayı, durum takibini ve tahsilatı tek yerde toplar.
+            Gün içinde hangi halı nereden alınacak, nerede teslim edilecek ve kim ne kadar ödedi — hepsi net.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#pricing">Ücretsiz dene</a>
+
+            <a class="play-badge" href="#pricing" aria-label="Google Play bağlantısı">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M4 3.5L14.5 12L4 20.5V3.5Z" fill="#54BD95"/>
+                <path d="M14.5 12L18.8 8.5C20.4 9.4 21.5 10.2 21.5 12C21.5 13.8 20.4 14.6 18.8 15.5L14.5 12Z" fill="#191A15" opacity="0.65"/>
+              </svg>
+              <span>
+                <div class="small">Google Play</div>
+                <div style="font-weight:800">Yakında</div>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-card" aria-label="Uygulama önizleme">
+            <div class="photo">
+              <img src="./assets/anasayfasaggorsel.png" alt="Halı Defterim uygulama ekran görüntüsü" />
+            </div>
+          </div>
+
+          <div class="hero-floating" aria-hidden="true">
+            <div class="floating-pill hero-pill">
+              <div>Günlük Tahsilat</div>
+              <strong>₺ 4.500,00</strong>
+              <span class="send">Kaydet</span>
+              <hr />
+            </div>
+
+            <div class="hero-sticker purple" style="left: 28px; top: 132px">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 12h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 7v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="hero-sticker yellow" style="right: -6px; top: 10px">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3l2.2 5.2L20 9l-4 3.8L17.2 19 12 16 6.8 19 8 12.8 4 9l5.8-.8L12 3Z" fill="#161C28" opacity="0.9"/>
+              </svg>
+            </div>
+
+            <div class="hero-sticker pink" style="right: 78px; bottom: 12px">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 6h16v12H4V6Z" stroke="#161C28" stroke-width="2"/>
+                <path d="M7 10h10" stroke="#161C28" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="hero-income">
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div>
+                  <div class="label">Bugün</div>
+                  <div class="value">₺ 245,00</div>
+                </div>
+                <div class="mini" aria-hidden="true"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <section id="product" class="section support" aria-label="Özet">
+      <div class="container support-grid">
+        <div class="support-left">
+          <h2 class="h2">Türkiye’nin her yerindeki halı yıkama işletmeleri için</h2>
+          <p class="p">
+            Alımdan teslimata kadar; müşteri bilgileri, halı kalemleri (m²/adet), fotoğraflar, rota ve tahsilat tek yerde.
+            Böylece sahadaki ekip ve ofis aynı veriye bakar, işler karışmaz.
+          </p>
+
+          <div class="ratings" aria-label="Puanlar">
+            <div class="rating">
+              <div class="stars" aria-hidden="true">★★★★★</div>
+              <div class="score">4.9 <span>/ 5 puan</span></div>
+              <div class="small">Hız & kullanım kolaylığı</div>
+            </div>
+
+            <div class="rating">
+              <div class="stars" aria-hidden="true">★★★★★</div>
+              <div class="score">4.8 <span>/ 5 puan</span></div>
+              <div class="small">Rota & teslimat takibi</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="support-cards" aria-label="Öne çıkanlar">
+          <div class="icon-card">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 12a7 7 0 0 1 14 0" stroke="#54BD95" stroke-width="2" stroke-linecap="round"/>
+                <path d="M12 5v7l4 2" stroke="#54BD95" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="title">Planlama</p>
+              <p class="desc">Alım/teslim saatlerini, ekip atamalarını ve gün planını netleştirin.</p>
+            </div>
+          </div>
+
+          <div class="icon-card">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 7h16" stroke="#54BD95" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 7v13h12V7" stroke="#54BD95" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M9 11h6" stroke="#54BD95" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="title">Kayıt</p>
+              <p class="desc">Müşteri ve ürün detaylarını düzenli tutun; aradığınızı saniyede bulun.</p>
+            </div>
+          </div>
+
+          <div class="icon-card">
+            <div class="icon-box" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3l8 4v10l-8 4-8-4V7l8-4Z" stroke="#54BD95" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M12 7v14" stroke="#54BD95" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="title">Takip</p>
+              <p class="desc">Yıkanacak → yıkamada → teslim edilecek süreçlerini anlık izleyin.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Özellikler">
+      <div class="container">
+        <div class="features-head">
+          <div>
+            <h2 class="h2">İşinizi hızlandıran özellikler</h2>
+          </div>
+          <div>
+            <p class="p" style="margin:0">
+              Günlük operasyonu pratikleştiren ekranlar: sipariş listesi, rota haritası, fotoğraf, fiyatlandırma ve tahsilat.
+            </p>
+          </div>
+        </div>
+
+        <div class="features-grid">
+          <article class="feature">
+            <div class="feature-visual">
+              <div class="accent" aria-hidden="true"></div>
+              <div class="pad" aria-hidden="true"></div>
+              <div class="mock">
+                <img src="./assets/siparisyonetimigorsel.png" alt="Sipariş yönetimi ekran görüntüsü" loading="lazy" />
+              </div>
+            </div>
+            <p class="title">Sipariş yönetimi</p>
+            <p class="desc">Siparişleri yönetin, durumlarını güncelleyin, alım/teslim akışını netleştirin.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-visual">
+              <div class="accent" aria-hidden="true"></div>
+              <div class="pad" aria-hidden="true"></div>
+              <div class="mock">
+                <img src="./assets/rotaharitagorseli.png" alt="Rota ve harita ekran görüntüsü" loading="lazy" />
+              </div>
+            </div>
+            <p class="title">Rota & harita</p>
+            <p class="desc">Günlük rotayı tek ekranda görün, durakları optimize edin ve sırayla takip edin.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-visual">
+              <div class="accent" aria-hidden="true"></div>
+              <div class="pad" aria-hidden="true"></div>
+              <div class="mock">
+                <img src="./assets/cariyonetimi.png" alt="Cari yönetimi (tahsilat) ekran görüntüsü" loading="lazy" />
+              </div>
+            </div>
+            <p class="title">Tahsilat kayıtları</p>
+            <p class="desc">Ödeme durumlarını işaretleyin, kalan alacağı görün, günlük toplamı takip edin.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Faydalar">
+      <div class="container benefit-grid">
+        <div>
+          <h2 class="h2">Size ne kazandırır?</h2>
+          <div class="checklist">
+            <div class="check">
+              <div class="mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 7L10 17l-5-5" stroke="#54BD95" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="text">Daha az karışıklık, daha düzenli iş akışı</div>
+            </div>
+
+            <div class="check">
+              <div class="mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 7L10 17l-5-5" stroke="#54BD95" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="text">Online fiyatlandırma & ürün kalemleri</div>
+            </div>
+
+            <div class="check">
+              <div class="mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 7L10 17l-5-5" stroke="#54BD95" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="text">Her ay rapor: teslimatlar, tahsilatlar, performans</div>
+            </div>
+
+            <div class="check">
+              <div class="mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 7L10 17l-5-5" stroke="#54BD95" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="text">Zaman tasarrufu: rota ve teslimatlar daha hızlı</div>
+            </div>
+
+            <div class="check">
+              <div class="mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 7L10 17l-5-5" stroke="#54BD95" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="text">Müşteri memnuniyeti: daha net bilgilendirme</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="benefit-photo" aria-label="Görsel alanı">
+          <div class="placeholder">
+            <img src="./assets/rotagorseli2.png" alt="Rota optimizasyonu ekran görüntüsü" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section" aria-label="Paketler">
+      <div class="container">
+        <div class="pricing-head">
+          <h2 class="h2">Size uygun paketi seçin</h2>
+          <div class="pricing-sub">İki paket: aylık ya da yıllık. Dilediğiniz zaman değiştirin.</div>
+        </div>
+
+        <div class="plans">
+          <article class="plan" aria-label="Aylık Paket">
+            <div>
+              <p class="name">Aylık</p>
+              <p class="blurb">Kısa dönem kullanım için</p>
+              <div class="price" aria-label="Fiyat">
+                <span class="currency">₺</span>
+                <span class="amount">1500</span>
+                <span class="per">/ ay</span>
+              </div>
+            </div>
+
+            <div class="box">
+              <ul>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Sipariş & durum takibi</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Rota & harita</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Fotoğraf & ürün detayları</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Tahsilat (cari) takibi</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Raporlar</span></li>
+              </ul>
+              <button class="cta" type="button">Aylık seç</button>
+            </div>
+          </article>
+
+          <article class="plan featured" aria-label="Yıllık Paket">
+            <div>
+              <p class="name">Yıllık</p>
+              <p class="blurb">Yıl boyu kullanım için</p>
+              <div class="price" aria-label="Fiyat">
+                <span class="currency">₺</span>
+                <span class="amount">15000</span>
+                <span class="per">/ yıl</span>
+              </div>
+              <div class="badge">2 ay ücretsiz</div>
+            </div>
+
+            <div class="box">
+              <ul>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Sipariş & durum takibi</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Rota & harita</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Fotoğraf & ürün detayları</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Tahsilat (cari) takibi</span></li>
+                <li><span class="tick" aria-hidden="true">✓</span><span>Raporlar</span></li>
+              </ul>
+              <button class="cta" type="button">Yıllık seç</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section dark" aria-label="Yorumlar">
+      <div class="container testimonial-grid">
+        <div>
+          <h2 class="h2" style="color:#fff">Kullanıcılar ne diyor?</h2>
+          <p class="p" style="color: var(--muted)">
+            Gün içinde telefon trafiği azalıyor, işler kaybolmuyor ve tahsilat/teslimat daha düzenli ilerliyor.
+          </p>
+
+          <div class="quote">
+            “Halı Defterim ile alım–teslim listesi netleşti. Ekip sahada, ofis ise anlık takip edebiliyor.
+            Gün sonu tahsilat raporu da çok iyi.”
+            <div class="small" style="margin-top: 16px">Erhan Dirioğlu</div>
+          </div>
+
+          <div class="avatars" aria-label="Kullanıcılar (placeholder)">
+            <div class="avatar">A</div>
+            <div class="avatar">B</div>
+            <div class="avatar">C</div>
+            <div class="avatar">D</div>
+            <div class="avatar">+</div>
+          </div>
+        </div>
+
+        <div class="form-card" aria-label="İletişim">
+          <div class="form-inner">
+            <h3 class="form-title">Başlayalım</h3>
+
+            <form action="#" method="post">
+              <div class="field">
+                <div class="label">E-posta</div>
+                <input class="input" type="email" name="email" placeholder="E-postanızı girin" autocomplete="email" />
+              </div>
+
+              <div class="field">
+                <div class="label">Mesaj</div>
+                <textarea class="textarea" name="message" placeholder="Ne söylemek istersiniz?"></textarea>
+              </div>
+
+              <button class="form-btn" type="button">Demo talep et</button>
+              <div class="form-note"><span style="color:rgba(255,255,255,0.55)">veya</span> Ücretsiz dene</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="about" class="footer" aria-label="Alt bilgi">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <a class="footer-brand" href="#home" aria-label="Halı Defterim">
+              <img class="footer-logo" src="./assets/logo.png" alt="" aria-hidden="true" />
+              <span class="footer-brand-text">Halı Defterim</span>
+            </a>
+            <p class="p" style="margin-top: 12px; color: var(--muted)">Hemen başlayın, halı işinizi kolaylaştırın.</p>
+
+            <div class="newsletter" aria-label="E-bülten">
+              <input type="email" placeholder="E-postanızı yazın" aria-label="E-posta" />
+              <button type="button" aria-label="Gönder">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M5 12h14" stroke="#161C28" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M13 6l6 6-6 6" stroke="#161C28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <a class="footer-email" href="mailto:support@halidefterim.com">support@halidefterim.com</a>
+          </div>
+
+          <div class="footer-links">
+            <div>
+              <p class="col-title">Destek</p>
+              <a href="#">Yardım</a>
+              <a href="#">Hesap</a>
+              <a href="#">Hakkımızda</a>
+              <a href="#">İletişim</a>
+            </div>
+            <div>
+              <p class="col-title">Ürün</p>
+              <a href="#">Güncellemeler</a>
+              <a href="#">Güvenlik</a>
+              <a href="#">Beta</a>
+              <a href="#">Paketler</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <div class="footer-bottom">
+          <div>© 2025 Halı Defterim. Tüm hakları saklıdır.</div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <a href="#">Şartlar</a>
+            <span style="width:4px; height:4px; border-radius:999px; background: rgba(255,255,255,0.5)"></span>
+            <a href="./privacy.html">Gizlilik</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
