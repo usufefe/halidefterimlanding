@@ -1,0 +1,13 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit",
+    "source.sortMembers": "explicit"
+  },
+  // Terminal ayarları - Çift terminal açılmasını önle
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.automationProfile.windows": {
+    "path": "pwsh.exe"
+  }
+}
