@@ -459,23 +459,26 @@
     </footer>
   </div>
 
-  <script src="./script.js" defer></script>
   <script>
-    // GoTrue e-posta doğrulama redirect'ini yakala
+    // GoTrue e-posta doğrulama redirect'ini yakala - ÖNCE ÇALIŞMALI
     (function() {
       const hash = window.location.hash;
+      console.log('Hash:', hash);
       
       // Eğer URL'de #access_token varsa ve type=signup ise
       if (hash && hash.includes('access_token=')) {
         const params = new URLSearchParams(hash.substring(1));
         const type = params.get('type');
+        console.log('Type:', type);
         
         if (type === 'signup') {
           // E-posta doğrulama başarılı, confirmation sayfasına yönlendir
-          window.location.href = '/confirmation.html?success=true';
+          console.log('Redirecting to confirmation...');
+          window.location.replace('/confirmation?success=true');
         }
       }
     })();
   </script>
+  <script src="./script.js" defer></script>
 </body>
 </html>
