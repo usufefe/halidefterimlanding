@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#54BD95" />
+
+  <title>Hesap Silme Politikası — Halı Defterim</title>
+  <meta name="description" content="Halı Defterim uygulamasında hesabınızı nasıl silebileceğinizi ve veri silme sürecini öğrenin." />
+
+  <meta property="og:title" content="Hesap Silme Politikası — Halı Defterim" />
+  <meta property="og:description" content="Hesap silme talebi ve veri yönetimi politikası." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="./assets/logo.png" />
+  <link rel="shortcut icon" type="image/png" href="./assets/logo.png" />
+  <link rel="apple-touch-icon" href="./assets/logo.png" />
+
+  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    .policy-page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .policy-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .policy-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .policy-header p {
+      font-size: 1.125rem;
+      color: var(--muted-2);
+    }
+
+    .policy-section {
+      margin-bottom: 48px;
+    }
+
+    .policy-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-section h2::before {
+      content: '';
+      width: 6px;
+      height: 32px;
+      background: var(--primary);
+      border-radius: 3px;
+    }
+
+    .policy-section h3 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 32px 0 16px;
+    }
+
+    .policy-section p {
+      font-size: 1.063rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .policy-section ul {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+
+    .policy-section li {
+      font-size: 1.063rem;
+      line-height: 1.7;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border-left: 4px solid var(--primary);
+      padding: 24px;
+      margin: 24px 0;
+      border-radius: var(--radius-sm);
+    }
+
+    .highlight-box p {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .contact-box {
+      background: var(--primary);
+      color: white;
+      padding: 32px;
+      border-radius: var(--radius);
+      text-align: center;
+      margin: 48px 0;
+    }
+
+    .contact-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: white;
+    }
+
+    .contact-box p {
+      font-size: 1.125rem;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .contact-box a {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-box a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .steps-list {
+      counter-reset: step-counter;
+      list-style: none;
+      padding: 0;
+    }
+
+    .steps-list li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 24px;
+    }
+
+    .steps-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 32px;
+      transition: gap 0.2s;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .policy-header h1 {
+        font-size: 2rem;
+      }
+
+      .policy-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .policy-section h3 {
+        font-size: 1.25rem;
+      }
+
+      .steps-list li {
+        padding-left: 50px;
+      }
+
+      .steps-list li::before {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="policy-page">
+    <a href="index.html" class="back-link">
+      ← Ana Sayfaya Dön
+    </a>
+
+    <div class="policy-header">
+      <h1>Hesap Silme Politikası</h1>
+      <p>Halı Defterim uygulamasında hesabınızı ve verilerinizi yönetme hakkınız vardır.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>🗑️ Hesabımı Nasıl Silerim?</h2>
+      <p>Hesabınızı silmek için aşağıdaki adımları takip edebilirsiniz:</p>
+      
+      <h3>Uygulama İçinden:</h3>
+      <ul class="steps-list">
+        <li>
+          <strong>Profil Ayarları'na Gidin</strong><br>
+          Uygulamayı açın ve sağ üst köşedeki profil simgesine dokunun.
+        </li>
+        <li>
+          <strong>"Hesap Ayarları" Seçeneğini Seçin</strong><br>
+          Menüden "Hesap Ayarları" veya "Ayarlar" bölümüne gidin.
+        </li>
+        <li>
+          <strong>"Hesabımı Sil" Butonuna Tıklayın</strong><br>
+          Sayfanın alt kısmında bulunan "Hesabımı Sil" seçeneğini bulun ve tıklayın.
+        </li>
+        <li>
+          <strong>İşlemi Onaylayın</strong><br>
+          Hesap silme işlemini onaylamak için ekrandaki talimatları takip edin.
+        </li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>💡 Not:</strong> Hesap silme işlemi geri alınamaz. İşlemi tamamlamadan önce tüm verilerinizi yedeklediğinizden emin olun.</p>
+      </div>
+
+      <h3>E-posta ile Talep:</h3>
+      <p>Alternatif olarak, hesap silme talebinizi e-posta yoluyla da iletebilirsiniz:</p>
+      <ul>
+        <li>Kayıtlı e-posta adresinizden <strong>support@halidefterim.com</strong> adresine "Hesap Silme Talebi" konulu bir e-posta gönderin</li>
+        <li>E-postanızda adınızı, soyadınızı ve kayıtlı telefon numaranızı belirtin</li>
+        <li>Talebiniz 3 iş günü içinde işleme alınacaktır</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>📦 Hangi Veriler Silinir?</h2>
+      <p>Hesap silme işlemi tamamlandığında aşağıdaki verileriniz kalıcı olarak silinir:</p>
+      <ul>
+        <li><strong>Hesap Bilgileri:</strong> Ad, soyad, e-posta adresi, telefon numarası</li>
+        <li><strong>Profil Bilgileri:</strong> Profil fotoğrafı ve kişisel tercihleriniz</li>
+        <li><strong>İş Verileri:</strong> Sipariş kayıtları, müşteri bilgileri, halı takip verileri</li>
+        <li><strong>Rota ve Teslimat Bilgileri:</strong> Planlanan rotalar, teslimat geçmişi</li>
+        <li><strong>Finansal Kayıtlar:</strong> Tahsilat kayıtları ve ödeme geçmişi</li>
+        <li><strong>Uygulama Ayarları:</strong> Tüm uygulama içi tercihleri ve ayarlarınız</li>
+      </ul>
+
+      <h3>⚖️ Yasal Yükümlülükler Gereği Saklanan Veriler</h3>
+      <p>Türkiye Cumhuriyeti kanunları gereği, aşağıdaki veriler yasal saklama süreleri boyunca saklanmaya devam edilir:</p>
+      <ul>
+        <li><strong>Fatura ve Ödeme Kayıtları:</strong> Vergi mevzuatı gereği 10 yıl</li>
+        <li><strong>Ticari Belgeler:</strong> Türk Ticaret Kanunu gereği gerekli olan dönem boyunca</li>
+        <li><strong>Hukuki Süreçlere İlişkin Belgeler:</strong> Dava ve hukuki işlemler devam ettiği sürece</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>🔒 Güvenlik:</strong> Yasal saklama gereklilikleri dışındaki tüm verileriniz 30 gün içinde sistemlerimizden kalıcı olarak silinir ve yedeklerden de temizlenir.</p>
+      </div>
+    </div>
+
+    <div class="policy-section">
+      <h2>⏱️ Süreç Ne Kadar Sürer?</h2>
+      <p>Hesap silme sürecimiz aşağıdaki şekilde işler:</p>
+      
+      <ul class="steps-list">
+        <li>
+          <strong>Talep Alındı (0. Gün)</strong><br>
+          Hesap silme talebiniz sistemimize kaydedilir ve hesabınız "silme beklemede" durumuna geçer.
+        </li>
+        <li>
+          <strong>Bekleme Süresi (1-7. Günler)</strong><br>
+          7 günlük bekleme süresince hesabınız askıya alınır ancak verileriniz silinmez. Bu süre içinde fikrinizi değiştirirseniz hesabınızı geri yükleyebilirsiniz.
+        </li>
+        <li>
+          <strong>Silme İşlemi Başlar (8. Gün)</strong><br>
+          Bekleme süresi sona erdikten sonra verilerinizin silinmesi başlar.
+        </li>
+        <li>
+          <strong>Silme Tamamlandı (8-30. Günler)</strong><br>
+          30 gün içinde tüm verileriniz sistemlerimizden, yedeklerden ve sunuculardan kalıcı olarak silinir.
+        </li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><strong>📧 Bildirim:</strong> Hesap silme işleminin her aşamasında (talep alındı, silme başladı, silme tamamlandı) kayıtlı e-posta adresinize bilgilendirme mesajı gönderilir.</p>
+      </div>
+
+      <h3>🔄 Hesap Geri Yükleme</h3>
+      <p>İlk 7 gün içinde fikrinizi değiştirirseniz:</p>
+      <ul>
+        <li>Kayıtlı e-posta adresinize gönderilen özel bağlantıya tıklayın</li>
+        <li>Veya <strong>support@halidefterim.com</strong> adresine "Hesap Geri Yükleme" konulu e-posta gönderin</li>
+        <li>Hesabınız ve tüm verileriniz 24 saat içinde restore edilecektir</li>
+      </ul>
+
+      <p><strong>⚠️ Önemli:</strong> 7 günlük bekleme süresi geçtikten sonra hesap geri yükleme mümkün değildir.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>📋 Sıkça Sorulan Sorular</h2>
+      
+      <h3>Hesabımı silersem eski müşteri verilerime tekrar ulaşabilir miyim?</h3>
+      <p>Hayır, hesap silme işlemi tamamlandıktan sonra hiçbir veriye tekrar ulaşılamaz. Bu nedenle işlem öncesinde önemli verilerinizi yedeklemenizi şiddetle tavsiye ederiz.</p>
+
+      <h3>Başka bir e-posta adresiyle yeni hesap açabilir miyim?</h3>
+      <p>Evet, hesabınız silindikten sonra dilediğiniz zaman farklı bir e-posta adresiyle yeni hesap açabilirsiniz.</p>
+
+      <h3>Premium üyeliğim varsa ücret iadesi alabilir miyim?</h3>
+      <p>Hesap silme talebinde bulunduğunuzda, kullanılmamış premium üyelik süreniz için oransal iade yapılır. İade süreci 14 iş günü içinde tamamlanır.</p>
+
+      <h3>Verilerim gerçekten siliniyor mu?</h3>
+      <p>Evet, KVKK (Kişisel Verilerin Korunması Kanunu) ve GDPR düzenlemelerine uygun olarak, yasal saklama zorunlulukları dışındaki tüm verileriniz kalıcı olarak silinir.</p>
+    </div>
+
+    <div class="contact-box">
+      <h3>Yardıma mı ihtiyacınız var?</h3>
+      <p>Hesap silme süreci hakkında sorularınız için destek ekibimizle iletişime geçin.</p>
+      <a href="mailto:support@halidefterim.com">Destek Ekibiyle İletişim</a>
+    </div>
+
+    <div class="policy-section">
+      <h2>📜 Yasal Bilgiler</h2>
+      <p>Bu hesap silme politikası, Halı Defterim'in veri koruma ve gizlilik politikalarının bir parçasıdır. Kişisel verilerinizin işlenmesi hakkında daha fazla bilgi için <a href="privacy.html" style="color: var(--primary); font-weight: 600;">Gizlilik Politikamızı</a> inceleyebilirsiniz.</p>
+      <p style="color: var(--muted); font-size: 0.938rem; margin-top: 32px;">Son güncelleme: 27 Aralık 2025</p>
+    </div>
+  </div>
+
+  <footer style="background: var(--dark); color: rgba(255,255,255,0.8); padding: 40px 20px; text-align: center; margin-top: 80px;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <p style="margin: 0 0 16px;">© 2025 Halı Defterim. Tüm hakları saklıdır.</p>
+      <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;">
+        <a href="index.html" style="color: rgba(255,255,255,0.8); font-size: 0.938rem;">Ana Sayfa</a>
+        <a href="privacy.html" style="color: rgba(255,255,255,0.8); font-size: 0.938rem;">Gizlilik Politikası</a>
+        <a href="account-deletion.html" style="color: rgba(255,255,255,0.8); font-size: 0.938rem;">Hesap Silme</a>
+        <a href="mailto:support@halidefterim.com" style="color: rgba(255,255,255,0.8); font-size: 0.938rem;">İletişim</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
