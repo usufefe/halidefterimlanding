@@ -162,13 +162,13 @@
 /* Timeline */
 .timeline {
   position: relative;
-  padding-left: 40px;
+  padding-left: 56px;
 }
 
 .timeline::before {
   content: '';
   position: absolute;
-  left: 16px;
+  left: 23px;
   top: 12px;
   bottom: 12px;
   width: 3px;
@@ -203,7 +203,7 @@
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -24px;
+  left: -33px;
   top: 0;
   height: 100%;
   width: 3px;
@@ -213,7 +213,7 @@
 
 .timeline-icon {
   position: absolute;
-  left: -32px;
+  left: -48px;
   top: 0;
   width: 32px;
   height: 32px;
