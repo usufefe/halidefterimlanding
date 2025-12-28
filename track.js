@@ -1,8 +1,8 @@
 // Track.js - Sipariş takip sayfası
 
 // Supabase config
-const SUPABASE_URL = 'https://vxdbuvxhucugmwxgwrwv.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4ZGJ1dnhodWN1Z213eGd3cnd2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE0MzQ3ODAsImV4cCI6MjA0NzAxMDc4MH0.kXP-BljzJ7U-Y9o0N85XsHGMCBNJSgJfVZJXmCy0dSc';
+const SUPABASE_URL = 'https://api.halidefterim.com';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNjQxNzY5MjAwLCJleHAiOjE3OTk1MzU2MDB9.GLBdxNO6K_T2PQWPLK2b1_sTViqXdTFMTSwecOFsOII';
 
 // Status mesajları
 const STATUS_MESSAGES = {
@@ -19,22 +19,24 @@ const STATUS_ORDER = ['picked_up', 'in_facility', 'washing', 'completed', 'deliv
 // URL'den tracking code al
 function getTrackingCode() {
   const params = new URLSearchParams(window.location.search);
-  const code = params.get('code');
+  let code = params.get('code');
   
   if (!code) {
     // URL format: /track/{code} - path'ten almayı dene
     const path = window.location.pathname;
+    // Daha esnek bir regex: /track/ kısmından sonraki 8 karakterlik alfanümerik kodu al
     const match = path.match(/\/track\/([A-Z0-9]{8})/i);
     if (match) {
-      return match[1].toUpperCase();
+      code = match[1];
     }
   }
   
-  return code ? code.toUpperCase() : null;
+  return code ? code.trim().toUpperCase() : null;
 }
 
 // Sipariş takip bilgisi getir
 async function fetchOrderTracking(trackingCode) {
+  console.log('Fetching tracking for:', trackingCode);
   try {
     const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_order_tracking`, {
       method: 'POST',
@@ -49,11 +51,19 @@ async function fetchOrderTracking(trackingCode) {
     });
 
     if (!response.ok) {
-      throw new Error('API request failed');
+      const errorText = await response.text();
+      console.error('API Error:', response.status, errorText);
+      throw new Error(`API request failed: ${response.status}`);
     }
 
     const data = await response.json();
-    return data && data.length > 0 ? data[0] : null;
+    console.log('API Response:', data);
+
+    if (Array.isArray(data)) {
+      return data.length > 0 ? data[0] : null;
+    }
+    
+    return data || null;
   } catch (error) {
     console.error('Error fetching tracking:', error);
     return null;
