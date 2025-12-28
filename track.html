@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#54BD95" />
+
+  <title>Sipariş Takibi — Halı Defterim</title>
+  <meta name="description" content="Siparişinizin durumunu takip edin" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/png" href="./assets/logo.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./track.css" />
+</head>
+<body>
+  <div class="track-container">
+    <header class="track-header">
+      <a href="./index.html" class="brand">
+        <img class="brand-logo" src="./assets/logo.png" alt="Halı Defterim" />
+        <span class="brand-text">Halı Defterim</span>
+      </a>
+    </header>
+
+    <main class="track-main" id="trackingContent">
+      <!-- Loading state -->
+      <div class="track-loading" id="loadingState">
+        <div class="spinner"></div>
+        <p>Sipariş bilgisi yükleniyor...</p>
+      </div>
+
+      <!-- Error state -->
+      <div class="track-error hidden" id="errorState">
+        <div class="error-icon">⚠️</div>
+        <h2>Sipariş Bulunamadı</h2>
+        <p>Bu takip kodu ile eşleşen bir sipariş bulunamadı. Lütfen QR kodu veya linki kontrol edin.</p>
+      </div>
+
+      <!-- Success state -->
+      <div class="track-success hidden" id="successState">
+        <div class="track-card">
+          <div class="track-code">
+            <span class="track-code-label">Takip Kodu</span>
+            <span class="track-code-value" id="trackingCode">-</span>
+          </div>
+
+          <div class="order-info">
+            <h1 class="order-title" id="productName">-</h1>
+            <div class="order-meta">
+              <span id="orderNumber">-</span>
+              <span>•</span>
+              <span id="quantity">-</span>
+            </div>
+          </div>
+
+          <!-- Status Timeline -->
+          <div class="timeline">
+            <div class="timeline-item" data-status="picked_up">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="timeline-content">
+                <h3>Ürün Alındı</h3>
+                <p>Ürününüz tarafımızdan teslim alındı</p>
+                <span class="timeline-date" id="pickupDate">-</span>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-status="in_facility">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                  <path d="M9 3v18M15 3v18M3 9h18M3 15h18" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="timeline-content">
+                <h3>Tesiste İşleme Alındı</h3>
+                <p>Ürününüz tesisimizde işleme alındı</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-status="washing">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="timeline-content">
+                <h3>Yıkama İşlemi</h3>
+                <p>Ürününüz yıkanıyor</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-status="completed">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="timeline-content">
+                <h3>Yıkama Tamamlandı</h3>
+                <p>Ürününüz temizlendi ve teslimata hazır</p>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-status="delivered">
+              <div class="timeline-icon">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 3h5v5M21 3l-7.5 7.5M4 14h8M4 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="6" cy="10" r="3" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="timeline-content">
+                <h3>Teslim Edildi</h3>
+                <p>Ürününüz teslim edildi</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="status-badge" id="statusBadge">
+            <span id="statusMessage">-</span>
+          </div>
+        </div>
+
+        <div class="track-footer">
+          <p>Son güncelleme: <span id="updatedAt">-</span></p>
+          <a href="./index.html" class="footer-link">← Ana Sayfaya Dön</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="./track.js"></script>
+</body>
+</html>
