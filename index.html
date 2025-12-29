@@ -35,6 +35,7 @@
         <div class="nav-links" role="navigation">
           <a class="active" href="#home">Ana Sayfa</a>
           <a href="#product">Ürün</a>
+          <a href="#tracking">Sipariş Takibi</a>
           <a href="#pricing">Paketler</a>
           <a href="#contact">İletişim</a>
           <a href="#about">Hakkımızda</a>
@@ -300,6 +301,67 @@
       </div>
     </section>
 
+    <section id="tracking" class="section" aria-label="Sipariş Takibi" style="background: linear-gradient(180deg, rgba(84, 189, 149, 0.05) 0%, rgba(84, 189, 149, 0) 100%);">
+      <div class="container">
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+          <h2 class="h2" style="margin-bottom: 16px;">Siparişinizi Takip Edin</h2>
+          <p class="p" style="margin-bottom: 32px; color: var(--muted);">
+            QR kodunuzdaki takip numarasını girerek siparişinizin durumunu anlık olarak öğrenebilirsiniz.
+          </p>
+          
+          <div style="display: flex; flex-direction: column; gap: 16px; align-items: center;">
+            <div style="position: relative; width: 100%; max-width: 400px;">
+              <input 
+                type="text" 
+                id="trackingInput"
+                placeholder="Takip kodunuzu girin (ör: TRK-ABC123)"
+                style="
+                  width: 100%;
+                  padding: 16px 20px;
+                  font-size: 16px;
+                  border: 2px solid rgba(84, 189, 149, 0.2);
+                  border-radius: 12px;
+                  outline: none;
+                  transition: all 0.2s;
+                  font-family: 'Inter', sans-serif;
+                  text-transform: uppercase;
+                "
+                onkeypress="if(event.key === 'Enter') handleTrackingSearch()"
+              />
+            </div>
+            
+            <button 
+              onclick="handleTrackingSearch()"
+              style="
+                padding: 16px 48px;
+                background: #54BD95;
+                color: white;
+                border: none;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.2s;
+                font-family: 'Inter', sans-serif;
+              "
+              onmouseover="this.style.background='#45a881'"
+              onmouseout="this.style.background='#54BD95'"
+            >
+              Takip Et
+            </button>
+            
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px; color: var(--muted); font-size: 14px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Takip kodunuz QR kodunuzun altında yer almaktadır</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="pricing" class="section" aria-label="Paketler">
       <div class="container">
         <div class="pricing-head">
@@ -478,6 +540,36 @@
         window.location.replace('/confirmation?success=true');
       }
     }
+    
+    // Sipariş takip fonksiyonu
+    function handleTrackingSearch() {
+      const input = document.getElementById('trackingInput');
+      const trackingCode = input.value.trim().toUpperCase();
+      
+      if (!trackingCode) {
+        alert('Lütfen takip kodunuzu girin');
+        return;
+      }
+      
+      // track.html sayfasına yönlendir
+      window.location.href = `/track?code=${encodeURIComponent(trackingCode)}`;
+    }
+    
+    // Input focus stilleri
+    document.addEventListener('DOMContentLoaded', function() {
+      const trackingInput = document.getElementById('trackingInput');
+      if (trackingInput) {
+        trackingInput.addEventListener('focus', function() {
+          this.style.borderColor = '#54BD95';
+          this.style.boxShadow = '0 0 0 3px rgba(84, 189, 149, 0.1)';
+        });
+        
+        trackingInput.addEventListener('blur', function() {
+          this.style.borderColor = 'rgba(84, 189, 149, 0.2)';
+          this.style.boxShadow = 'none';
+        });
+      }
+    });
   </script>
   <script src="./script.js" defer></script>
 </body>
